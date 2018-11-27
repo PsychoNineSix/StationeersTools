@@ -38,22 +38,22 @@ namespace WorldUtils
 
         public bool WithinX(float min, float max)
         {
-            return this.x > min && this.x < max;
+            return this.x >= min && this.x <= max;
         }
 
         public bool WithinY(float min, float max)
         {
-            return this.y > min && this.y < max;
+            return this.y >= min && this.y <= max;
         }
 
         public bool WithinZ(float min, float max)
         {
-            return this.z > min && this.z < max;
+            return this.z >= min && this.z <= max;
         }
 
-        public float GetDistanceTo(Vector3 target)
+        public double GetDistanceTo(Vector3 target)
         {
-            return (float)(Math.Pow(x - target.x, 2) + Math.Pow(z - target.z, 2));
+            return Math.Sqrt(Math.Pow(x - target.x, 2) + Math.Pow(z - target.z, 2));
         }
     }
 }

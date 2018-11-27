@@ -9,20 +9,10 @@ namespace StationeersTools
     {
         public static void ShowMenus()
         {
-            var trimMenu = new ConsoleMenu()
-                .Add("Circle around player", () => Console.WriteLine("Sub_One"))
-                .Add("Circle around point", () => Console.WriteLine("Sub_One"))
-                .Add("Back to previous menu", ConsoleMenu.Close)
-                .Configure(config => {
-                    config.WriteHeaderAction = () => Console.WriteLine("What do you want to do?");
-                    config.SelectedItemBackgroundColor = ConsoleColor.DarkYellow;
-                });
-
             var voxelMenu = new ConsoleMenu()
-                    .Add("Trim world", () => trimMenu.Show())
-                    .Add("Flatten surface", () => Console.WriteLine("Sub_Two"))
-                    .Add("Create underground space", () => Console.WriteLine("Sub_Three"))
-                    .Add("Check ore count", () => Console.WriteLine("Sub_Four"))
+                    //.Add("Trim world", () => trimMenu.Show())
+                    .Add("Flatten surface", () => BinUtils.FlattenSurface())
+                    .Add("Create underground space", () => BinUtils.CreateUndergroundSpace())
                     .Add("Back to main menu", ConsoleMenu.Close)
                     .Configure(config => {
                         config.WriteHeaderAction = () => Console.WriteLine("What do you want to do?");
@@ -52,6 +42,32 @@ namespace StationeersTools
                 });
 
             mainMenu.Show();
+        }
+
+        public static void ShowVoxelSelectMenu(bool heightrequired)
+        {
+            Console.Clear();
+            Console.WriteLine("How would you like to pick the affected area?");
+
+            string[][] options =
+            {
+                PrintUtils.BuildRow("1", "Circle around point"),
+                PrintUtils.BuildRow("2", "Square around point"),
+                PrintUtils.BuildRow("3", "Point to point")
+            };
+
+            PrintUtils.PrintColumns(options, 1);
+            Console.WriteLine();
+
+            int selected = 100;
+
+            while (selected == 100)
+            {
+                string input = PrintUtils.RequestInputLine("Option");
+                int.TryParse(input, out selected);
+            }
+
+            BinUtils.StartSelect(selected, heightrequired);
         }
     }
 }

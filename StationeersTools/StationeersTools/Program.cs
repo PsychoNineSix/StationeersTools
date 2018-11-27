@@ -10,10 +10,10 @@ namespace StationeersTools
     {
         private static bool keepRunning = true;
 
-        private static Saves binfile;
-        private static XmlDocument xmlfile;
-        private static FileInfo raw_binfile;
-        private static FileInfo raw_xmlfile;
+        public static Saves binfile;
+        public static XmlDocument xmlfile;
+        public static FileInfo raw_binfile;
+        public static FileInfo raw_xmlfile;
 
         static void Main (string[] args)
         {
@@ -60,7 +60,7 @@ namespace StationeersTools
                 }
             }
 
-            string datetime = DateTime.Now.ToString("yyyyMMddHmm");
+            string datetime = DateTime.Now.ToString("yyyyMMddHmmss");
 
             raw_binfile.CopyTo(raw_binfile.FullName + "." + datetime + ".original");
             raw_xmlfile.CopyTo(raw_xmlfile.FullName + "." + datetime + ".original");
@@ -83,6 +83,7 @@ namespace StationeersTools
         {
             binfile = new Saves();
             binfile.LoadSave(raw_binfile.FullName);
+            VoxelUtils.ChunkSize = binfile.ChunkSize;
 
             xmlfile = new XmlDocument();
             xmlfile.Load(raw_xmlfile.FullName);

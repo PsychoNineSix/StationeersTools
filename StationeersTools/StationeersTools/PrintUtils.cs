@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using WorldUtils;
 
 namespace StationeersTools
 {
@@ -61,6 +62,80 @@ namespace StationeersTools
                 }
                 fromtop++;
             }
+        }
+
+        public static Vector3 RequestVector(string message)
+        {
+            PrintUtils.PrintLine(message, ConsoleColor.DarkYellow);
+
+            Vector3 point = new Vector3();
+            bool fx = false, fy = false, fz = false;
+
+            while (!fx)
+            {
+                string input = PrintUtils.RequestInputLine("X");
+                try
+                {
+                    point.x = float.Parse(input);
+                    fx = true;
+                }
+                catch (Exception ex)
+                {
+                    PrintUtils.PrintLine("Incorrect input!", ConsoleColor.Red);
+                }
+            }
+            while (!fy)
+            {
+                string input = PrintUtils.RequestInputLine("Y");
+                try
+                {
+                    point.y = float.Parse(input);
+                    fy = true;
+                }
+                catch (Exception ex)
+                {
+                    PrintUtils.PrintLine("Incorrect input!", ConsoleColor.Red);
+                }
+            }
+            while (!fz)
+            {
+                string input = PrintUtils.RequestInputLine("Z");
+                try
+                {
+                    point.z = float.Parse(input);
+                    fz = true;
+                }
+                catch (Exception ex)
+                {
+                    PrintUtils.PrintLine("Incorrect input!", ConsoleColor.Red);
+                }
+            }
+
+            return point;
+        }
+
+        public static float RequestFloat(string message)
+        {
+            float value = 0;
+            bool fr = false;
+
+            PrintUtils.PrintLine(message, ConsoleColor.DarkYellow);
+
+            while (!fr)
+            {
+                string input = PrintUtils.RequestInputLine("Value");
+                try
+                {
+                    value = float.Parse(input);
+                    fr = true;
+                }
+                catch (Exception ex)
+                {
+                    PrintUtils.PrintLine("Incorrect input!", ConsoleColor.Red);
+                }
+            }
+
+            return value;
         }
     }
 }
