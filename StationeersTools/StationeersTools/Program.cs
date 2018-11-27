@@ -17,6 +17,7 @@ namespace StationeersTools
 
         static void Main (string[] args)
         {
+            Console.Clear();
             PrintUtils.PrepareConsole();
             Console.CancelKeyPress += delegate (object sender, ConsoleCancelEventArgs e) {
                 e.Cancel = true;
@@ -25,8 +26,9 @@ namespace StationeersTools
 
             Console.WriteLine("Welcome to StationeersTools 2019 - Made by The Psycho");
             Console.WriteLine("You can always press ctrl+c to shut down, this will cancel unsaved changes.");
-            Console.WriteLine("Changes will always be written to a new file!");
-            PrintUtils.PrintLine("ALWAYS backup your old files BEFORE renaming the new files!", ConsoleColor.Red);
+            Console.WriteLine("Changes will always be written to the original file");
+            PrintUtils.PrintLine("Your original file will be backed up, but PLEASE make your own!", ConsoleColor.Red);
+            PrintUtils.PrintLine("I am not responsible for any damage this does to your savefiles.", ConsoleColor.Red);
 
             if (args.Length > 0)
             {
