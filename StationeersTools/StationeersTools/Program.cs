@@ -28,7 +28,7 @@ namespace StationeersTools
             Console.WriteLine("You can always press ctrl+c to shut down, this will cancel unsaved changes.");
             Console.WriteLine("Changes will always be written to the original file");
             PrintUtils.PrintLine("Your original file will be backed up, but PLEASE make your own!", ConsoleColor.Red);
-            PrintUtils.PrintLine("I am not responsible for any damage this does to your savefiles.", ConsoleColor.Red);
+            PrintUtils.PrintLine("Although very unlikely, I am not responsible for any damage after game updates.", ConsoleColor.Red);
 
             if (args.Length > 0)
             {
