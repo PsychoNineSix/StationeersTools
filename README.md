@@ -12,7 +12,7 @@ Future StationeersTools can be used to:
 + Fill structures with reagents (Autolathe, hydraulic pipe bender, etc.)
 + Garbage cleanup
 + Remove entire pipe/cable networks (By network ID)
-..+ This will most likely remove the cables from the game, but I will try to experiment with spawning them back onto the ground
+  + This will most likely remove the cables from the game, but I will try to experiment with spawning them back onto the ground
 
 ## Used in this project
 + Modified version of StationeersUtilities by Rainfey [(Bitbucket Repo)](https://bitbucket.org/Rainfey/stationeers-map-trimmer/overview)
